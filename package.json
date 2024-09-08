@@ -1,7 +1,7 @@
 {
-    "name": "blackjack",
+    "name": "stundenplan-scraper",
     "version": "1.0.0",
-    "description": "",
+    "description": "A simple web scraper for the timetable of the school I go to.",
     "main": "./bin/www",
     "private": true,
     "scripts": {
