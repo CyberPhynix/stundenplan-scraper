@@ -16,4 +16,18 @@ async function push(data) {
     }
 }
 
-module.exports = { push };
+async function get(date = new Date().toLocaleDateString()) {
+    try {
+        await client.connect();
+        const database = client.db("stundenplan-scraper");
+        const collection = database.collection("stundenplan");
+        const query = { date };
+        return await collection.findOne(query);
+    } catch (error) {
+        throw new Error(`Failed to get data from database: ${error}`);
+    } finally {
+        await client.close();
+    }
+}
+
+module.exports = { push, get };

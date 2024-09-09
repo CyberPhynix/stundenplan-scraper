@@ -8,6 +8,13 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+const requiredEnv = ["EMAIL", "PSW", "MONGODB_URI", "PORT", "HOST"];
+requiredEnv.forEach((variable) => {
+    if (!process.env[variable]) {
+        throw new Error(`Environment variable ${variable} is required`);
+    }
+});
+
 var app = require('../app');
 var setupScraper = require('../scraper');
 var debug = require('debug')('stundenplan-scraper:server');
