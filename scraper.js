@@ -17,7 +17,7 @@ const setupScraper = async () => {
 const scrapeSchedule = async () => {
     let browser;
     try {
-        browser = await puppeteer.launch({ headless: false, slowMo: 10 });
+        browser = await puppeteer.launch();
         const page = await browser.newPage();
 
         await login(page);
