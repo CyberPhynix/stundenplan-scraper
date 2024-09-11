@@ -17,9 +17,7 @@ const setupScraper = async () => {
 const scrapeSchedule = async () => {
     let browser;
     try {
-        browser = await puppeteer.launch({
-            executablePath: "/opt/render/.cache/puppeteer/chrome/linux-128.0.6613.119/chrome-linux64/chrome",
-        });
+        browser = await puppeteer.launch();
         const page = await browser.newPage();
 
         await login(page);
