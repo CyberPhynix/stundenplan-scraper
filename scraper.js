@@ -17,10 +17,7 @@ const setupScraper = async () => {
 const scrapeSchedule = async () => {
     let browser;
     try {
-        browser = await puppeteer.launch({
-            executablePath: "/opt/render/.cache/puppeteer/chrome/linux-128.0.6613.119/chrome",
-            headless: true,
-        });
+        browser = await puppeteer.launch({ headless: true });
         const page = await browser.newPage();
 
         await login(page);
@@ -36,6 +33,8 @@ const scrapeSchedule = async () => {
         const data = await getScheduleData(page);
 
         await db.push(data);
+
+        console.log("SCRAPER Successfully scraped schedule data and pushed to database at", data.datetime);
     } catch (error) {
         console.error(error);
     } finally {
